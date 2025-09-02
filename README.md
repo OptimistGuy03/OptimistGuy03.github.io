@@ -13,5 +13,5 @@ Instructions for setting up and running the Portfolio.  Replace the placeholders
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/OptimistGuy03/File_Name/
-    cd File_Name
+    git clone https://github.com/OptimistGuy03/OptimistGuy03.github.io/
+    cd OptimistGuy03.github.io
