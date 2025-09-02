@@ -1,116 +1,687 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Om Gupta</title>
-    <link rel="icon" href="1754235264937.png" type="image/png" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="Photo.png" type="image/png">
     <style>
-        /*
-         * This code introduces new features for a more dynamic and professional feel.
-         * Key additions include a subtle background animation and element fade-in effects.
-         */
-
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc; /* bg-slate-50 */
-            color: #1f2937; /* text-gray-800 */
-            overflow-x: hidden; /* Prevents horizontal scroll from animation */
-            position: relative;
-        }
-
-        /* Subtle background animation for a dynamic, modern feel */
-        .bg-animated-blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3730a3, #4f46e5);
-            opacity: 0.1;
-            z-index: -1;
-            animation: moveBlob 15s infinite alternate ease-in-out;
-            filter: blur(100px);
-        }
-
-        @keyframes moveBlob {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(300px, 150px) scale(1.2); }
-            100% { transform: translate(0, 0) scale(1); }
-        }
-
-        /* Gradient for the name */
-        .text-gradient {
-            background-image: linear-gradient(45deg, #3730a3, #4f46e5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Animation for links and cards to fade in smoothly */
-        .icon-link, .main-card, .profile-header {
-            animation: fadeInUp 1s ease-out forwards;
-            opacity: 0;
-        }
-
-        .icon-link { animation-delay: 0.8s; }
-        .main-card { animation-delay: 1.2s; }
-        .profile-header { animation-delay: 0.4s; }
-
-        @keyframes fadeInUp {
+        /* Custom CSS for animations */
+        @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 4px;
+        }
+
+        /* Active nav link */
+        .nav-link.active {
+            color: #4f46e5;
+            font-weight: 600;
+        }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center p-6 min-h-screen">
 
-    <div class="bg-animated-blob top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="text-xl font-bold text-indigo-600">OM GUPTA.</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link active text-gray-700 hover:text-indigo-600 transition">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-indigo-600 transition">About</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-indigo-600 transition">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-indigo-600 transition">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    <header class="text-center mb-10 mt-10 profile-header">
-        <img src="1754235264937.png" alt="Om Gupta" class="w-36 h-36 rounded-full mx-auto shadow-xl transform hover:scale-105 transition-transform duration-300 border-4 border-white" />
-        <h1 class="text-4xl sm:text-5xl font-extrabold mt-6 text-gradient">Hi, I'm Om Gupta</h1>
-        <p class="text-md sm:text-lg text-slate-600 mt-2 max-w-xl mx-auto">
-            MCA Graduate from <a href="https://makautwb.ac.in/" class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200 font-semibold underline">MAKAUT</a> &bull; Aspiring Software Engineer &bull; Based in Kolkata, India
-        </p>
-    </header>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="nav-link active block px-3 py-2 text-gray-700 hover:text-indigo-600">Home</a>
+                <a href="#about" class="nav-link block px-3 py-2 text-gray-700 hover:text-indigo-600">About</a>
+                <a href="#skills" class="nav-link block px-3 py-2 text-gray-700 hover:text-indigo-600">Skills</a>
+                <a href="#projects" class="nav-link block px-3 py-2 text-gray-700 hover:text-indigo-600">Projects</a>
+                <a href="#contact" class="nav-link block px-3 py-2 text-gray-700 hover:text-indigo-600">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-    <div class="flex flex-wrap justify-center gap-4 mb-12">
-        <a href="https://in.linkedin.com/in/om-gupta-448915375" target="_blank" class="icon-link flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-indigo-600"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            <span class="font-semibold text-indigo-800">LinkedIn</span>
-        </a>
-        <a href="https://leetcode.com/u/CoderBytes03/" target="_blank" class="icon-link flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-indigo-600"><path d="M13.298 3.01c-.131-.412-.483-.414-.616-.002-1.424 4.417-2.846 8.835-4.269 13.251-.12.378.136.634.469.529 1.455-.458 2.91-.916 4.364-1.374 2.052-1.281 4.104-2.563 6.156-3.844.298-.186.297-.492-.002-.68-1.503-.941-3.006-1.882-4.509-2.822-.162-.102-.34-.236-.453-.415-.461-1.077-.92-2.155-1.38-3.232zM21.989 12.001c0 5.46-4.43 9.89-9.889 9.89-5.46 0-9.89-4.43-9.89-9.89 0-5.459 4.43-9.889 9.89-9.889 5.46 0 9.889 4.43 9.889 9.889zM19.989 12.001c0-4.394-3.565-7.96-7.96-7.96-4.394 0-7.96 3.566-7.96 7.96 0 4.394 3.566 7.96 7.96 7.96 4.395 0 7.96-3.566 7.96-7.96z"/></svg>
-            <span class="font-semibold text-indigo-800">LeetCode</span>
-        </a>
-    </div>
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-indigo-50 to-purple-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Hi, I'm <span
+                            class="text-indigo-600">OM</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 mb-6">Aspiring Software Engineer</h2>
+                    <p class="text-gray-600 mb-8 text-lg"> I'm an MCA graduate with a passion for building robust and
+                        reliable software.</p>
+                    <div class="flex space-x-4">
+                        <a href="#projects"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition">View
+                            My Projects</a>
+                        <a href="#contact"
+                            class="border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg font-medium transition">Contact
+                            Me</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center fade-in delay-1">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-indigo-100 rounded-full overflow-hidden shadow-xl">
+                            <img src="Photo.png" alt="Profile" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 bg-white p-3 rounded-lg shadow-lg">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-2">
+                                    <i class="fas fa-code text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">Currently learning </p>
+                                    <p class="font-medium">Software Testing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <main class="w-full max-w-2xl bg-white p-8 rounded-xl shadow-2xl mb-12 main-card">
-        <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4">🧠 About Me</h2>
-        <ul class="space-y-4 text-lg text-slate-700">
-            <li>
-                <strong>You've reached my side of the web!</strong> I'm an MCA graduate with a passion for building robust and reliable software.
-            </li>
-            <li>
-                <strong>Aspiring Software Engineer:</strong> I'm dedicated to learning and growing in the field of software development, with a keen interest in <strong class="text-indigo-600">quality assurance and coding</strong>.
-            </li>
-            <li>
-                <strong>Learning by Doing:</strong> I'm always looking for new challenges. I constantly upskill through certifications and real-world projects to stay at the forefront of technology.
-            </li>
-        </ul>
-    </main>
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16 fade-in">About <span class="text-indigo-600">Me</span></h2>
 
-    <footer class="text-center text-slate-500 mt-auto mb-6">
-        <p class="text-sm italic">"Create the tools you dream of, and perfect them in the quiet hours."</p>
+            <div class="flex flex-col md:flex-row items-center fade-in delay-1">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 bg-indigo-50 rounded-lg overflow-hidden shadow-md">
+                        <img src="new.png" alt="About me" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4">Who am I?</h3>
+                    <p class="text-gray-600 mb-6">
+                        I'm a Aspiring Software engineer with a strong foundation in computer science, holding an MCA
+                        from Maulana Abul Kalam Azad University of Technology. I'm passionate about ensuring software
+                        quality and applying my knowledge to real-world projects.
+
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        I'm always looking for new challenges. I constantly upskill through certifications and
+                        real-world projects to stay at the forefront of technology.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-user text-indigo-600 mr-2"></i>
+                            <span><strong>Name:</strong> Om Gupta </span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-indigo-600 mr-2"></i>
+                            <span><strong>Email:</strong> updated soon </span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-indigo-600 mr-2"></i>
+                            <span><strong>Phone:</strong> updated soon </span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-indigo-600 mr-2"></i>
+                            <span><strong>Location:</strong> West Bengal, IN </span>
+                        </div>
+                    </div>
+                    <!--Cv Name updated soon-->
+                    <a href="#"
+                        class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                        Download CV <i class="fas fa-download ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16 fade-in">My <span class="text-indigo-600">Skills</span></h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Technical Skills -->
+                <div class="bg-white p-8 rounded-xl shadow-md fade-in delay-1">
+                    <h3 class="text-2xl font-semibold mb-6 flex items-center">
+                        <i class="fas fa-laptop-code text-indigo-600 mr-3"></i>
+                        Technical Skills
+                    </h3>
+
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>HTML/CSS</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>JavaScript</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>PHP</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>SQL</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Skills -->
+                <div class="bg-white p-8 rounded-xl shadow-md fade-in delay-2">
+                    <h3 class="text-2xl font-semibold mb-6 flex items-center">
+                        <i class="fas fa-user-tie text-indigo-600 mr-3"></i>
+                        Professional Skills
+                    </h3>
+
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Communication</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Teamwork</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Project Management</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Creativity</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Technologies -->
+            <div class="mt-16 fade-in delay-3">
+                <h3 class="text-2xl font-semibold mb-8 text-center">Tools & Technologies</h3>
+
+                <div class="flex flex-wrap justify-center gap-6">
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-24">
+                        <i class="fab fa-html5 text-4xl text-orange-500 mb-2"></i>
+                        <span class="text-sm">HTML5</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-24">
+                        <i class="fab fa-css3-alt text-4xl text-blue-500 mb-2"></i>
+                        <span class="text-sm">CSS3</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-24">
+                        <i class="fab fa-js text-4xl text-yellow-400 mb-2"></i>
+                        <span class="text-sm">JavaScript</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-24">
+                        <i class="fab fa-php text-4xl text-blue-400 mb-2"></i>
+                        <span class="text-sm">PHP</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-24">
+                        <i class="fab fa-github text-4xl text-green-500 mb-2"></i>
+                        <span class="text-sm">Github</span>
+                    </div>
+
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-24">
+                        <i class="fab fa-git-alt text-4xl text-orange-600 mb-2"></i>
+                        <span class="text-sm">Git</span>
+                    </div>
+
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-24">
+                        <i class="fas fa-code text-4xl text-green-600 mb-2"></i>
+                        <span class="text-sm">LeetCode</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16 fade-in">My <span class="text-indigo-600">Projects</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition fade-in delay-1">
+                    <div class="h-48 overflow-hidden">
+                        <img src="about.jpg" alt="Project 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">DoctoPro System</h3>
+                        <p class="text-gray-600 mb-4">A Medical Data Authentication System is a secure and robust
+                            process
+                            designed to ensure the integrity and authenticity of medical data of paitents.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">PHP</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Boostrap</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">MySQL</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/OptimistGuy03/Docto_Pro_MCA"
+                                class="text-gray-600 hover:text-gray-800">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition fade-in delay-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="960x0.webp" alt="Project 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Taskflow Web App</h3>
+                        <p class="text-gray-600 mb-4">Taskflow Web App is an intuitive platform for organizing,
+                            tracking, and prioritizing personal or team tasks with a user-friendly, real-time interface.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">React.js</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Boostrap</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">CSS</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/OptimistGuy03/Taskflow"
+                                class="text-gray-600 hover:text-gray-800">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition fade-in delay-3">
+                    <div class="h-48 overflow-hidden">
+                        <img src="download.png" alt="Project 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Weather-Site Web App</h3>
+                        <p class="text-gray-600 mb-4">A simple static weather site that allows users to check current
+                            weather conditions for any location.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">HTML</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">CSS3</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/OptimistGuy03/Weather-Site"
+                                class="text-gray-600 hover:text-gray-800">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in">
+                <a href="#"
+                    class="inline-block border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg font-medium transition">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16 fade-in">Get In <span class="text-indigo-600">Touch</span>
+            </h2>
+
+            <div class="flex flex-col md:flex-row gap-12">
+                <!-- Contact Info -->
+                <div class="md:w-1/3 fade-in delay-1">
+                    <div class="bg-white p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Email</h4>
+                                    <p class="text-gray-600"> updated soon </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Phone</h4>
+                                    <p class="text-gray-600"> updated soon </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Location</h4>
+                                    <p class="text-gray-600"> West Bengal, IN </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h4 class="font-medium mb-4">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/OptimistGuy03"
+                                    class="bg-indigo-100 text-indigo-600 hover:bg-indigo-200 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://in.linkedin.com/in/om-gupta-448915375"
+                                    class="bg-indigo-100 text-indigo-600 hover:bg-indigo-200 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://leetcode.com/u/CoderBytes03/"
+                                    class="bg-indigo-100 text-indigo-600 hover:bg-indigo-200 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fas fa-code"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="md:w-2/3 fade-in delay-2">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-semibold mb-6">Contact</h3>
+
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                                    <input type="text" id="name" name="name"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-gray-700 mb-2">Your Email</label>
+                                    <input type="email" id="email" name="email"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-2">Message</label>
+                                <textarea id="message" name="message" rows="5"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                                Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold">OM GUPTA.</a>
+                    <p class="text-gray-400 mt-2">"Create the tools you dream of, and perfect them in the quiet hours."
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex space-x-6 mb-4">
+                        <a href="https://github.com/OptimistGuy03"
+                            class="bg-indigo-100 text-indigo-600 hover:bg-indigo-200 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://in.linkedin.com/in/om-gupta-448915375"
+                            class="bg-indigo-100 text-indigo-600 hover:bg-indigo-200 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://leetcode.com/u/CoderBytes03/"
+                            class="bg-indigo-100 text-indigo-600 hover:bg-indigo-200 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fas fa-code"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">© 2025 OM GUPTA. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 bg-indigo-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Here you would typically send the form data to a server
+            // For this example, we'll just log it and show an alert
+            console.log({ name, email, subject, message });
+
+            alert('Thank you for visiting this site! Have a great day.');
+            contactForm.reset();
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.fade-in');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Run once on page load
+        animateOnScroll();
+
+        // Run on scroll
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
 </body>
+
 </html>
